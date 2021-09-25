@@ -1,9 +1,23 @@
+body{
+    margin: 50px;
+    background-color: black;
+    color: white;
+
+}
+
+
 .postBox img{
     width: 500px;
     max-height: 500px;
     border-radius: 10%;
     }
     .postBox{
-        border: 2px solid black;
+        border: 2px solid red;
         max-width: fit-content;
+        max-height: fit-content;
+         font-size: 20px;  
     }
+
+    .postcontainer{
+        font-family: 'Railway', sans-serif;
+          }
