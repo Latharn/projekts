@@ -47,7 +47,7 @@ function show() {
             <div>${post['location']}</div>
             <img src="${post['image']}">
             <div>${post['description']}</div>
-        </div><br>
+        </div><br><br>
          `;
 
 

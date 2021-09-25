@@ -52,6 +52,17 @@ body{
     color: blue;
     
 }
+.df{
+    display: flex;
+    justify-content: space-between;
+}
+.pt{
+    padding-top:20px ;
+}
+.recommendcontainer a{
+    text-decoration: none;
+    color:blue;
+}
 .recommended img{
     filter: invert(1);
     height: 20px;
@@ -63,7 +74,7 @@ body{
 .recommended a{
     text-decoration: none;
     color: white;
-}
+    }
 
 
 .postBox img{
@@ -82,4 +93,11 @@ body{
 
     .postcontainer{
         font-family: 'Railway', sans-serif;
+          }
+
+          @media(max-width:1000px){
+              .profilecontainer{
+                  display: none;
+              }
+              
           }
