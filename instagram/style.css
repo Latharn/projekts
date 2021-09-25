@@ -85,6 +85,7 @@ body{
     }
     .postBox{
         border: 2px solid rgb(51, 46, 46);
+        border-radius: 0 10% 10% 0;
         max-width: fit-content;
         max-height: fit-content;
          font-size: 20px;  
@@ -96,8 +97,18 @@ body{
           }
 
           @media(max-width:1000px){
+              body{
+                  margin: 10px;
+              }
               .profilecontainer{
                   display: none;
               }
+              .header{
+                  display: flex;
+                  flex-direction: column;
+              }
+            .postBox img{
+                width:50vw;
+            }
               
           }
