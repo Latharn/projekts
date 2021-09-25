@@ -1,0 +1,47 @@
+.content{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+h1{
+    font-size: 40px;
+}
+img{
+    height: 150px;
+    margin: 10px;
+}
+.full-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+  }
+  .bg {
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.945);
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+  }
+  .d-none {
+    display: none;}
+
+    .fullscreen img{
+        height: 60vh;
+
+    }
+    .close{
+        position: absolute;
+        top: 0;
+        right: 20px;
+    }
+    .close img{
+        filter: invert(1);
+        height: 10vh;
+        cursor: pointer;
+    }

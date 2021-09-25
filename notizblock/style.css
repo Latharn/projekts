@@ -1,0 +1,130 @@
+.header {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.205);
+}
+
+input {
+    font-size: 30px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 250px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width: 25vw;
+    height: 10vh;
+    margin-left: 50px;
+    
+  
+}
+
+.note-bg {
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.note {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 50vw;
+    background-color: orange;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 24px;
+    position: relative;
+}
+
+.note img {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 30px;
+}
+
+.d-none {
+    display: none;
+}
+
+.inputTitle {
+    width: 45vw;
+    height: 6vh;
+    margin-top: 30px;
+}
+
+.inputNote {
+    width: 45vw;
+    height: 50vh;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.card {
+    position: relative;
+    box-shadow: 10px 10px 10px 10px rgb( 0 0 0/ 10%);
+    padding: 8px;
+    margin-bottom: 32px;
+    margin-top: 50px;
+    height: 250px;
+    width: 350px;
+    border-color: rgb(0, 0, 0, 0.5);
+    border-width: 5px;
+    border-style: solid;
+    font-size: 20px;
+}
+.card img{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+
+}
+
+#content{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px;
+    
+    
+    justify-content: space-between;
+}
+.btn{
+    height: 50px;
+    width: 250px;
+}
+
+.head-img{
+    padding-left: 50px;
+    height: 75px;
+    
+}
+h1{
+    padding-left:20px ;
+}
+.card h1{
+    color: red;
+}
+.card p{
+    padding-left: 20px;
+}

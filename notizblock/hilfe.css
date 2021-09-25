@@ -1,0 +1,62 @@
+.headline {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    color: rgb(180, 175, 175);
+}
+
+.test {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.card {
+    box-shadow: 20px 20px 20px 20px rgb(200 0 0/ 10%);
+    padding: 8px;
+    margin-bottom: 32px;
+    margin-top: 50px;
+    height: 250px;
+    width: 350px;
+    border-color: rgb(128, 0, 75);
+    border-width: 5px;
+    border-style: dotted;
+    font-size: 20px;
+}
+
+.inputfields {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputfield {
+    display: flex;
+    width: 850px;
+    height: 50px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 0px;
+    color: rgb(110, 106, 106);
+    background-color: #f5caca;
+    outline: none;
+    font-size: medium;
+}
+
+.button {
+    margin-top: 50px;
+    background-color: #e43e75;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px
+}
+
+
+#content{
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: space-between;
+}
