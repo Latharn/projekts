@@ -1,0 +1,9 @@
+.postBox img{
+    width: 500px;
+    max-height: 500px;
+    border-radius: 10%;
+    }
+    .postBox{
+        border: 2px solid black;
+        max-width: fit-content;
+    }
