@@ -1,8 +1,68 @@
 body{
-    margin: 50px;
+    margin: 10px 50px;
     background-color: black;
     color: white;
 
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    filter: invert(1);
+    color: white;
+    align-items: center;
+}
+.header img{
+    height: 75px;
+}
+
+.nav img{
+    height: 30px;
+    padding: 10px;
+    cursor: pointer;
+}
+.content{
+    display: flex;
+    justify-content: space-evenly;
+}
+.profilecontainer{
+    height: 500px;
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+.profile{
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    padding: 10px;
+    font-size: 40px;
+   
+}
+.profile img{
+    height: 60px;
+    filter: invert(1);
+    
+}
+.profile span{
+    padding-left: 10px;
+}
+.profile a{
+    text-decoration: none;
+    font-size: 20px;
+    color: blue;
+    
+}
+.recommended img{
+    filter: invert(1);
+    height: 20px;
+    padding-right: 20px;
+}
+.recommended{
+    padding: 20px;
+}
+.recommended a{
+    text-decoration: none;
+    color: white;
 }
 
 
