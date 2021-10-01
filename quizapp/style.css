@@ -1,0 +1,19 @@
+body{
+   min-height: 100vh ;
+    background-color: black!important;
+}    
+.container{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.question-footer{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    align-items: center;
+    padding-top: 12px;
+}
+.quizcard{
+    width: 35rem;
+}
