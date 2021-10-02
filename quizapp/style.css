@@ -1,6 +1,6 @@
 body{
    min-height: 100vh ;
-    background-color: black!important;
+    background-color: rgba(0, 0, 0, 0.85)!important;
 }    
 .container{
      display: flex;
@@ -16,4 +16,8 @@ body{
 }
 .quizcard{
     width: 35rem;
+}
+.answer-card:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
 }
