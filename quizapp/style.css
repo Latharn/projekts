@@ -24,3 +24,21 @@ body{
 .bg-danger, .bg-success{
     color: white;
 }
+.w90{
+    width: 90%;
+}
+.win-img{
+    display: flex;
+    justify-content: center;
+}
+.text-center{
+    text-align: center;
+}
+.progress-bar{
+ background-color: #41464b !important;
+}
+.btn-center{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
