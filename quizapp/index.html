@@ -28,7 +28,11 @@
     <div class="container">
         <div class="card quizcard">
             <img src="img/quizlogo.png" class="card-img-top" alt="...">
-            <div class="card-body">
+
+            <div class="card-body" id="endscreen" style="display: none;">
+                Quiz beendet!
+            </div>
+            <div class="card-body" id="question-body">
                 <h5 class="card-title" id="question-text">Frage</h5>
 
                 <div class="card answer-card mb-2" onclick="answer('answer_1')">

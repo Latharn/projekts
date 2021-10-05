@@ -75,6 +75,7 @@ function init() {
 }
 function showQuestion() {
     if (currentQuestion >= questions.length) {
+        showEndscreen();
 
     } else {
         let question = questions[currentQuestion];
@@ -90,16 +91,10 @@ function showQuestion() {
 function answer(selection) {
     let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
-    console.log(' Gewählte Antwort ist', selection.slice(-1));
-    console.log(selectedQuestionNumber)
-    console.log('Richtige Antwort ist', question['right_answer']);
-
     let idOfRightAnswer = `answer_${question['right_answer']}`;
     if (selectedQuestionNumber == question['right_answer']) {
-        console.log('Richtige Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
-        console.log('Leider Falsche Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
@@ -122,4 +117,9 @@ function resetAnswerButtons() {
     document.getElementById('answer_3').parentNode.classList.remove('bg-success');
     document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
+}
+
+function showEndscreen(){
+    document.getElementById('endscreen').style= '';
+    document.getElementById('question-body').style='display: none';
 }
