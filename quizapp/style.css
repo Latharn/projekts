@@ -59,12 +59,3 @@ body{
 .s20{
     font-size: 20px;    
 }
-
-@media(max-width:600px){
-
-.card img{
-    width: 75%;
-    display: flex;
-    justify-content: center;
-}
-}
