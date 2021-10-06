@@ -1,11 +1,16 @@
 body{
    min-height: 100vh ;
-    background-color: rgba(0, 0, 0, 0.85)!important;
+    background-image: url(img/background.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    overflow: hidden;
 }    
 .container{
      display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
+    
 }
 .question-footer{
     display: flex;
@@ -17,6 +22,10 @@ body{
 .quizcard{
     width: 35rem;
 }
+.answer-card{
+    border: 1px solid white !important;
+}
+
 .answer-card:hover{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.05);
@@ -35,10 +44,27 @@ body{
     text-align: center;
 }
 .progress-bar{
- background-color: #41464b !important;
+ background-color: rgba(252, 0, 0, 0.705) !important;
 }
 .btn-center{
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+.card{
+    background-color:rgba(0, 0, 0, 0.486) !important;
+    color: white;
+     
+}
+.s20{
+    font-size: 20px;    
+}
+
+@media(max-width:600px){
+
+.card img{
+    width: 75%;
+    display: flex;
+    justify-content: center;
+}
 }
