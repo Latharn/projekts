@@ -6,16 +6,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-    <script src="script.js"></script>
+
+
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
 </head>
 
-<body onload="loadPokemon()">
-    <div id="pokedex">
-        <h1 id="pokemonName">NAME</h1>
-<img src="img/pokeball.png" id="pokemonSprite"  alt="">
-    </div>
+<body onload="init()">
 
+
+
+    <!-- Container -->
+    <div class="container" id="container">
+    </div>
+    <!-- Fullscrren Container -->
+    <div class="container-fs d-none" id="container-fs" onclick="closeBig()">
+        <div class="card-big grass" id="cardSmall-1" onclick="event.stopPropagation()">
+            <div class="card-big-top">
+                <div class="headline" id="pokemon-name">Bisasam</div>
+                <div class="number" id="number">#1</div>
+            </div>
+            <div class="position-img-big">
+                <img class="img-big" id="pokemonImage" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png">
+            </div>
+            <div class="card-big-bottom" id="types-1">
+                <div class="type">
+                    grass
+                </div>
+                <div class="type">
+                    poison
+                </div>
+            </div>
+        </div>
+        <div class="card-bottom" onclick="event.stopPropagation()">
+            <table>
+                <th>
+                    Stats
+                </th>
+                <tr>
+                    <td>
+                        HP
+                    </td>
+                    <td>
+                        45
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Attack
+                    </td>
+                    <td>
+                        49
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Defense
+                    </td>
+                    <td>
+                        49
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Special Attack
+                    </td>
+                    <td>
+                        65
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Special Defense
+                    </td>
+                    <td>
+                        65
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Speed
+                    </td>
+                    <td>
+                        45
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

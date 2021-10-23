@@ -1,11 +1,216 @@
-#pokedex {
+body {
+    margin: 0;
     display: flex;
-    min-height: 50vh;
-    background-color: rgb(158, 9, 9);
-    color: white;
+    justify-content: center;
+    background-color: rgba(7, 0, 0, 0.678);
+}
+
+.d-none {
+    display: none !important;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 947px;
+}
+
+.container-fs {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.card-big {
+    margin: 20px;
+    max-width: 80%;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    position: relative;
+    border-radius: 30px;
+    height: 330px;
+    min-width: 300px;
+}
+
+.position-img-big {
+    position: absolute;
+    bottom: 60px;
+    right: 10px;
+}
+
+.img-big {
+    height: 200px;
+    width: 200px;
+}
+
+.card-big-top {
+    display: flex;
     justify-content: space-between;
 }
 
-body {
-    margin: 0;
+.card-big-bottom {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.card-small {
+    margin: 20px;
+    width: 240px;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    position: relative;
+    min-height: 140px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.card-small:hover {
+    filter: brightness(1.1);
+}
+
+.card-small-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.position-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 12px;
+    padding-bottom: 12px;
+}
+
+.headline {
+    font-size: 32px;
+}
+
+.number {
+    font-size: 24px;
+    filter: opacity(0.6);
+}
+
+.img-small {
+    height: 100px;
+    width: 100px;
+}
+
+.card-small-bottom {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.type {
+    background-color: rgba(255, 255, 255, 0.705);
+    padding: 4px;
+    margin: 2px;
+    border-radius: 10px;
+}
+
+.card-bottom {
+    position: relative;
+    background-color: white;
+    border-radius: 40px;
+    height: 50%;
+    margin-top: -90px;
+    width: 330px;
+}
+
+table {
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.normal {
+    background-color: lightgray;
+}
+
+.fire {
+    background-color: rgb(214, 4, 4);
+}
+
+.water {
+    background-color: rgb(1, 1, 185);
+}
+
+.grass {
+    background-color: green;
+}
+
+.bug {
+    background-color: rgb(85, 212, 85);
+}
+
+.poison {
+    background-color: greenyellow;
+}
+
+.electric {
+    background-color: yellow;
+}
+
+.ground {
+    background-color: sandybrown;
+}
+
+.fighting {
+    background-color: rgb(255, 97, 97);
+}
+
+.psychic {
+    background-color: pink;
+}
+
+.rock {
+    background-color:rgb(105, 26, 26);
+}
+
+.ghost {
+    background-color: rgb(236, 167, 236);
+}
+
+.ice {
+    background-color: rgb(148, 148, 248)
+}
+
+.dragon {
+    background-color: rgba(97, 6, 92, 0.664);
+}
+
+.fairy {
+    background-color: #fad7fa;
+}
+.steel{
+    background-color:silver;
+}
+.dark{
+    background-color: darkslategrey;   
+}
+.flying{
+    background-color: whitesmoke;
 }
