@@ -21,10 +21,10 @@ async function preloadnextPokemon() {
 }
 
 async function loadnextPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon?offset=${start}&limit=150`;
+    let url = `https://pokeapi.co/api/v2/pokemon?offset=${start}&limit=75`;
     let response = await fetch(url);
     pokemons = await response.json();
-    start += 150;
+    start += 75;
 }
 
 async function loadPokemonInformation() {
