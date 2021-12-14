@@ -1,9 +1,45 @@
-canvas{
-    background-color: black;
-}
-body{
+body {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+canvas {
+    background-color: black;  
+   
+}
+
+.dbNone {
+    display: none;
+}
+
+#newGame {
+    margin-top: -70px;
+    z-index: 5;
+    background-color: green;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+
+#newGame:hover {
+    cursor: pointer;
+}
+
+#fullscreen {
+    margin-left: 55vw;
+    margin-top: 1rem;
+}
+
+#legend {
+    display: flex;
+    column-gap: 3rem;
     align-items: center;
 }

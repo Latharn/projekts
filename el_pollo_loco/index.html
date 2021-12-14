@@ -1,36 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>El pollo Loco</title>
+
     <link rel="stylesheet" href="style.css">
+    <script src="js/classes/movableObjects.class.js"></script>
+    <script src="js/classes/chicken.class.js"></script>
+    <script src="js/classes/bottleBar.class.js"></script>
+    <script src="JS/classes/character.class.js"></script>
+    <script src="js/classes/cloud.class.js"></script>
+    <script src="js/classes/background.class.js"></script>
+    <script src="js/classes/world.class.js"></script>
+    <script src="js/classes/keyboard.class.js"></script>
+    <script src="js/classes/level.class.js"></script>
+    <script src="js/classes/endboss.class.js"></script>
+    <script src="js/classes/statusbar.class.js"></script>
+    <script src="js/classes/coinsbar.class.js"></script>
+    <script src="js/classes/bottle.class.js"></script>
+    <script src="js/classes/coins.class.js"></script>
+    <script src="js/classes/flyingBottle.class.js"></script>
+    <script src="js/classes/gameOver.class.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/levels/level1.js"></script>
+    <script src="https://kit.fontawesome.com/36c389de7e.js" crossorigin="anonymous"></script>
 
-    <script src="models/movable-object.class.js"></script>
-    <script src="models/character.class.js"></script>
-    <script src="models/chicken.class.js"></script>
-    <script src="models/endboss.class.js"></script>
-    <script src="models/cloud.class.js"></script>
-    <script src="models/background-object.class.js"></script>
-    <script src="models/keyboard.class.js"></script>
-    <script src="models/world.class.js"></script>
-    <script src="models/level.class.js"></script>
-    <script src="levels/level1.js"></script>
 
-    <script src="js/game.js"></script>
 </head>
 
 <body onload="init()">
+    
+    <img id="startImg" class="start" src="img/9.Intro _ Outro Image/Start Screen/Opción 1.png" width="1200px"
+        height="700px">
 
-    <h1>El Pollo Loco</h1>
+    <canvas id="canvas" class="dbNone" width="1200px" height="700px"> </canvas>
 
-    <canvas id="canvas" width="720px" height="480px">
+    <button id="newGame" class="dbNone" onclick="restart()"> Restart</button>
+
+    <button id="fullscreen" onclick="canvasFullScreen()"> Fullscreen </button>
+
+    <div id="legend">
+        <div>
+            <i class="fas fa-arrow-left"></i>
+            <p> move left</p>
+        </div>
+        <div>
+            <i class="fas fa-arrow-right"></i>
+            <p> move right</p>
+        </div>
+        <div>
+            <i class="fas fa-arrow-up"></i>
+            <p> jump</p>
+        </div>
+        <div>
+            <div> SPACE</div>
+            <p> throw Bottle</p>
+        </div>
+        <div>
+            <div> ESC</div>
+            <p> minimize screen</p>
+        </div>
+
+    </div>
 
 
-
-    </canvas>
 </body>
 
 </html>
