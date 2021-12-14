@@ -1,51 +1,59 @@
-class World{
-character = new Character();
-enemies= [
-    new Chicken(),
-    new Chicken(),
-    new Chicken(),
-];
-clouds=[
-    new cloud()
-];
-backgroundObjects=[
-    new backgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png',0),
-    new backgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png',0),
-    new backgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png',0),
-    new backgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png',0),
-    
-    
-]
+class World {
+    character = new Character();
+    level=level1;
+        
     ctx;
-canvas;
-constructor(canvas){
-    this.canvas= canvas
-this.ctx= canvas.getContext('2d');
-this.draw();
-}
-
-    draw(){
-        this.ctx.clearRect(0,0, canvas.width, canvas.height);
-this.addObjectsToMap(this.backgroundObjects)
-this.addToMap(this.character);
-this.addObjectsToMap(this.clouds)
-this.addObjectsToMap(this.enemies)
+    canvas;
+    keyboard;
+    camera_x=0;
 
 
-let self=this;
-requestAnimationFrame(function(){
-    self.draw();
-});
+    constructor(canvas, keyboard) {
+        this.canvas = canvas;
+        this.keyboard = keyboard;
+        this.ctx = canvas.getContext('2d');
+        this.draw();
+        this.setWorld();
+    };
+
+    setWorld() {
+        this.character.world = this;
+    };
+
+    draw() {
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.ctx.translate(this.camera_x,0);
+        this.addObjectsToMap(this.level.backgroundObjects)
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.enemies);
+        this.ctx.translate(-this.camera_x,0);
+
+
+        let self = this;
+        requestAnimationFrame(function () {
+            self.draw();
+        });
     }
 
-addToMap(mo){
-this.ctx.drawImage(mo.img,mo.x,mo.y,mo.width,mo.height)
-};
+    addToMap(mo) {
+        if (mo.otherDirection) {
+            this.ctx.save();
+            this.ctx.translate(mo.width, 0);
+            this.ctx.scale(-1, 1);
+            mo.x = mo.x * -1;
+        }
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+        if (mo.otherDirection) {
+            mo.x = mo.x * -1;
+            this.ctx.restore();
+        }
+    };
 
-addObjectsToMap(objects){
-objects.forEach(o =>{
-    this.addToMap(o);
-});
-}
+    addObjectsToMap(objects) {
+        objects.forEach(o => {
+            this.addToMap(o);
+        });
+    }
 
 }
