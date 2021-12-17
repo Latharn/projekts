@@ -1,0 +1,45 @@
+.container{
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    padding-bottom: 100px;
+    
+   
+    
+    h1{
+        color: white;
+        font-size: 64px;
+        padding-left: 120px;
+        padding-right: 150px;
+    }
+
+    img{
+        height: 350px;
+        width: 350px;
+        border-radius: 50%;
+        
+        
+    }
+    button{
+        position: absolute;
+        height: 50px;
+        width: 300px;
+        left: 120px;
+        margin-top: 50px;
+        color: #2DFCD8;
+        cursor: pointer;
+        background-color: black;
+        border: 1px solid ;
+        border-color: #2DFCD8;
+        &:hover{
+            background-color: #2DFCD8 ;
+            color: white;
+            
+        }
+
+    }
+}
+
