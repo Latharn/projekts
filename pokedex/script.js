@@ -1,197 +1,306 @@
-window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        renderPokemon();
-        preloadnextPokemon();
-    };
-}
+let x = 0;
+let y = 20;
+allPokemons = [];
+let pokedexInformation = ["hp", "attack", "defense", "spec.-att.", "spec.-def.", "speed"];
 
-let pokemons = [];
-let pokemonsInformation = [];
-let start = 0;
 
-async function init() {
-    await preloadnextPokemon();
-    renderPokemon();
-    preloadnextPokemon();
-}
 
-async function preloadnextPokemon() {
-    await loadnextPokemon();
-    await loadPokemonInformation();
-}
+/**
+ * Load the first 20 Pokemons and create for every Pokemon a div container
+*/
+async function loadPokemons() {
 
-async function loadnextPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon?offset=${start}&limit=75`;
+    let url = 'https://pokeapi.co/api/v2/pokemon/?limit=400&offset=0';
     let response = await fetch(url);
-    pokemons = await response.json();
-    start += 75;
-}
+    currentPokemons = await response.json();
+    pokemons = currentPokemons['results']
 
-async function loadPokemonInformation() {
 
-    for (let i = 0; i < pokemons['results'].length; i++) {
-        const pokemon = pokemons['results'][i];
-        let inforesponse = await fetch(pokemon['url']);
-        pokemonsInformation.push(await inforesponse.json());
-    };
-}
+    document.getElementById('main').innerHTML = '';
+    for (let i = 0; i < y; i++) {
 
-function renderPokemon() {
-    document.getElementById('container').innerHTML = "";
-
-    for (let i = 0; i < pokemonsInformation.length; i++) {
-        const pokemon = pokemonsInformation[i];
-        document.getElementById('container').innerHTML += `
-        <!-- Card Small -->
-        <div class="card-small" id="cardSmall-${i}" onclick="openBig(${i})">
-            <div class="card-small-top">
-                <div class="headline" id="pokemon-name">${pokemon['name']}</div>
-                <div class="number" id="number">#${pokemon['id']}</div>
+        document.getElementById('main').innerHTML +=
+            `
+            <div class="pokemon_details">
+                <div class="card" style="width: 18rem;">
+                    <img src="" id="picturePokemon${[i]}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 id="card-title${[i]}" class="card-title"></h5>
+                        <div class="card-body-display">
+                            <p>HÃ¶he</p>
+                            <p id="height${[i]}"></p>
+                        </div>
+                        <div class="card-body-display">
+                            <p>Gewicht</p>
+                            <p id="weight${[i]}"></p>
+                        </div>
+                        <a onclick="openPokedex(${[i]})" class="btn btn-danger">Mehr Details</a>
+                    </div>
+                </div>
             </div>
-            <div class="position-img">
-                <img class="img-small" id="pokemonImage" src="${pokemon['sprites']['other']['official-artwork']['front_default']}">
-            </div>
-            <div class="card-small-bottom" id="types-${i}">
-            </div>
-        </div>
-        `;
-        types(i);
-    };
-}
-
-function types(i) {
-    let types = pokemonsInformation[i]['types'];
-    for (let j = 0; j < types.length; j++) {
-        let type = types[j]['type']['name'];
-        document.getElementById('types-' + i).innerHTML += `
-        <div class="type">
-        ${type}
-        </div>
         `;
 
-        if (type = type) {
-            document.getElementById('cardSmall-' + i).classList.add(types[0]['type']['name']);
-        }
-    };
+        loadPokemonDetails();
+
+        loadAllNames();
+
+        createPokedexInformationTable();
+
+
+    }
+
+
 }
 
-function typesbig(i) {
-    let types = pokemonsInformation[i]['types'];
-    for (let j = 0; j < types.length; j++) {
-        let type = types[j]['type']['name'];
-        document.getElementById('typesbig-' + i).innerHTML += `
-        <div class="type">
-        ${type}
-        </div>
-        `;
+/**
+ * Load the Details for the first 20 Pokemons
+*/
+async function loadPokemonDetails() {
+    for (let i = x; i < y; i++) {
+        let urlDetails = `https://pokeapi.co/api/v2/pokemon/${pokemons[i]['name']}`;
+        let response = await fetch(urlDetails);
+        currentPokemon = await response.json();
 
-        if (type = type) {
-            document.getElementById('cardBig-' + i).classList.add(types[0]['type']['name']);
-        }
-    };
+
+        document.getElementById('picturePokemon' + i).src = currentPokemon['sprites']['other']['dream_world']['front_default'];
+        document.getElementById('card-title' + i).innerHTML = currentPokemon.name;
+        document.getElementById('height' + i).innerHTML = currentPokemon.height + ' cm';
+        document.getElementById('weight' + i).innerHTML = currentPokemon.weight + ' kg';
+    }
 }
 
-function openBig(i) {
-    document.getElementById('container-fs').classList.remove('d-none');
-    renderBig(i);
+
+/**
+ * load all names of pokemons in a array
+*/
+function loadAllNames() {
+    for (let i = 0; i < pokemons.length; i++) {
+
+        allPokemons.push(pokemons[i]['name']);
+
+    }
 }
 
-function closeBig() {
-    document.getElementById('container-fs').classList.add('d-none');
-}
+/**
+ * create table for progess bar
+*/
+function createPokedexInformationTable() {
 
-function renderBig(i) {
-    renderBigInfo(i);
-    typesbig(i);
-    renderStats(i);
-    renderAbility(i);
-    renderHeight(i);
-    renderWeight(i);
-}
+    var table = "<table>";
 
-function renderBigInfo(i) {
-    document.getElementById('container-fs').innerHTML = '';
-    let pokemon = pokemonsInformation[i];
-    document.getElementById('container-fs').innerHTML = `
-    <div class="card-big" id="cardBig-${i}" onclick="event.stopPropagation()">
-        <div class="card-big-top">
-            <div class="headline" id="pokemon-name">${pokemon['name']}</div>
-            <div class="number" id="number">#${pokemon['id']}</div>
-        </div>
-        <div class="position-img-big">
-            <img class="img-big" id="pokemonImage" src="${pokemon['sprites']['other']['official-artwork']['front_default']}">
-        </div>
-        <div class="card-big-bottom" id="typesbig-${i}">
-        </div>
-    </div>
-    <div class="card-bottom" onclick="event.stopPropagation()">
-        <span class="center"><b>Stats</b></span>
-        <table id="stats-${i}">    
-        </table>
-        <span class="center"><b>Ability</b></span>
-        <table id="ability-${i}">    
-        </table>
-        <div class="center" id="height-${i}">
-        </div>
-        <div class="center" id="weight-${i}">
-        </div>
-    </div>
-    `;
-}
+    for (let i = 0; i < pokedexInformation.length; i++) {
 
-function renderStats(i) {
-    document.getElementById('stats-' + i).innerHTML = "";
-
-    let stats = pokemonsInformation[i]['stats'];
-
-    for (let j = 0; j < stats.length; j++) {
-        let stat = stats[j];
-        document.getElementById('stats-' + i).innerHTML += `
+        table +=
+            `
         <tr>
-            <td>
-                ${stat['stat']['name']}
-            </td>
-            <td>
-                ${stat['base_stat']}
-            </td>
+            <td>${pokedexInformation[i]}</td>  
+            <td class="progress-bar-width">        <div class="pokedex-card">
+            <div class="progress">
+                <div id="${pokedexInformation[i]}" class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+        </div></td>  
         </tr>
+        `
+    }
+
+    table += "</table>";
+
+
+    document.getElementById('pokedex-table').innerHTML = table;
+
+}
+
+/**
+ * Open the Pokedex for one Pokemon
+*/
+function openPokedex(n) {
+    document.getElementById('pokedex').classList.remove('d-none');
+    document.getElementById('loadMore').classList.add('d-none');
+
+
+    document.getElementById('pokedex-name').innerHTML = currentPokemons['results'][n]['name']
+
+
+    loadPokedexInformation(n);
+
+}
+
+
+/**
+ * Load and innerHTML the Details for the Popup (Pokedex)
+*/
+
+async function loadPokedexInformation(n) {
+    let pokedexDetails = `https://pokeapi.co/api/v2/pokemon/${currentPokemons['results'][n]['name']}`;
+    let responsePokedex = await fetch(pokedexDetails);
+    currentPokedex = await responsePokedex.json();
+
+    document.getElementById('types').innerHTML = ``;
+
+    for (let i = 0; i < currentPokedex['types'].length; i++) {
+        document.getElementById('types').innerHTML +=
+            `
+        <h6 id="types${[i]}"></h6>
+        `
+        document.getElementById('types' + i).innerHTML = currentPokedex['types'][i]['type']['name'];
+    }
+
+    document.getElementById('pokedex-id').innerHTML = ' #' + currentPokedex.id;
+    document.getElementById('pokedex-image').src = currentPokedex['sprites']['other']['dream_world']['front_default'];
+    document.getElementById('hp').innerHTML = currentPokedex['stats'][0]['base_stat'];
+    document.getElementById('attack').innerHTML = currentPokedex['stats'][1]['base_stat'];
+    document.getElementById('defense').innerHTML = currentPokedex['stats'][2]['base_stat'];
+    document.getElementById('spec.-att.').innerHTML = currentPokedex['stats'][3]['base_stat'];
+    document.getElementById('spec.-def.').innerHTML = currentPokedex['stats'][4]['base_stat'];
+    document.getElementById('speed').innerHTML = currentPokedex['stats'][5]['base_stat'];
+
+
+    loadStatsProgressBar();
+
+}
+
+
+/**
+ * load the styles (width) for progress bar
+*/
+
+function loadStatsProgressBar() {
+    let hpProcent = currentPokedex['stats'][0]['base_stat'];
+    let attackProcent = currentPokedex['stats'][1]['base_stat'];
+    let defenseProcent = currentPokedex['stats'][2]['base_stat'];
+    let specialAttackProcent = currentPokedex['stats'][3]['base_stat'];
+    let specialDefenseProcent = currentPokedex['stats'][4]['base_stat'];
+    let speedProcent = currentPokedex['stats'][5]['base_stat'];
+    let pokedexBgColor = document.getElementById('pokedex-bg');
+    let bgColor = "type-" + currentPokedex['types'][0]['type']['name'];
+
+    let stats = [hpProcent, attackProcent, defenseProcent, specialAttackProcent, specialDefenseProcent, speedProcent,];
+
+    pokedexBgColor.classList.add(bgColor);
+
+
+    for (let i = 0; i < stats.length; i++) {
+        const element = stats[i];
+
+        document.getElementById(pokedexInformation[i]).style.width = element + "%";
+
+        if (stats[i] > 50) {
+            document.getElementById(pokedexInformation[i]).style.backgroundColor = "green";
+        } else {
+            document.getElementById(pokedexInformation[i]).style.backgroundColor = "red";
+        }
+    }
+}
+
+
+
+
+/**
+ * Close the Pokedex
+*/
+function closePokedex() {
+    document.getElementById('pokedex').classList.add('d-none');
+    document.getElementById('loadMore').classList.remove('d-none');
+
+
+}
+
+
+/**
+ * Load 20 more Pokemons
+*/
+function showMore() {
+
+    x += 20;
+    y += 20;
+    for (let i = x; i < y; i++) {
+
+        document.getElementById('main').innerHTML +=
+            `
+            <div class="pokemon_details">
+                <div class="card" style="width: 18rem;">
+                    <img src="" id="picturePokemon${[i]}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 id="card-title${[i]}" class="card-title"></h5>
+                        <div class="card-body-display">
+                            <p>HÃ¶he</p>
+                            <p id="height${[i]}"></p>
+                        </div>
+                        <div class="card-body-display">
+                            <p>Gewicht</p>
+                            <p id="weight${[i]}"></p>
+                        </div>
+                        <a onclick="openPokedex(${[i]})" class="btn btn-danger">Mehr Details</a>
+                    </div>
+                </div>
+            </div>
         `;
-    };
+    }
+
+
+    loadPokemonDetails()
+
 }
 
-function renderAbility(i) {
-    document.getElementById('ability-' + i).innerHTML = "";
 
-    let abilities = pokemonsInformation[i]['abilities'];
 
-    for (let j = 0; j < abilities.length; j++) {
-        let ability = abilities[j];
-        document.getElementById('ability-' + i).innerHTML += `
-        <tr>
-            <td>
-                ${ability['ability']['name']}
-            </td>
-        </tr>
-        `;
-    };
-}
 
-function renderHeight(i) {
-    document.getElementById('height-' + i).innerHTML = "";
 
-    let height = pokemonsInformation[i]['height'];
+/**
+ * Check if search Pokemon include and create a container
+*/
+function searchPokemon() {
+    let search = document.getElementById('searchPokemon').value;
 
-    document.getElementById('height-' + i).innerHTML = `
-        <span><b>Height:</b> ${height} dm</span>
+    if (allPokemons.includes(search)) {
+        z = allPokemons.indexOf(search);
+
+        document.getElementById('main').innerHTML =
+
+
+            `
+        <div class="pokemon_details">
+            <div class="card" style="width: 18rem;">
+                <img src="" id="picturePokemon${[z]}" class="card-img-top">
+                <div class="card-body">
+                    <h5 id="card-title${[z]}" class="card-title"></h5>
+                    <div class="card-body-display">
+                        <p>HÃ¶he</p>
+                        <p id="height${[z]}"></p>
+                    </div>
+                    <div class="card-body-display">
+                        <p>Gewicht</p>
+                        <p id="weight${[z]}"></p>
+                    </div>
+                    <a onclick="openPokedex(${[z]})" class="btn btn-danger">Mehr Details</a>
+                </div>
+            </div>
+        </div>
     `;
+
+    } else if (search === "") {
+        loadPokemons();
+    } else {
+        alert('Pokemon nicht gefunden');
+    }
+
+    resultSearch(z)
+
 }
 
-function renderWeight(i) {
-    document.getElementById('weight-' + i).innerHTML = "";
+/**
+ * Search the Information for the searched Pokemon
+*/
+async function resultSearch(z) {
 
-    let weight = pokemonsInformation[i]['weight'];
+    let urlResult = `https://pokeapi.co/api/v2/pokemon/${pokemons[z]['name']}`;
+    let response = await fetch(urlResult);
+    resultPokemon = await response.json();
 
-    document.getElementById('weight-' + i).innerHTML = `
-        <span><b>Weight:</b> ${weight} dg</span>
-    `;
+
+    document.getElementById('picturePokemon' + z).src = resultPokemon['sprites']['other']['dream_world']['front_default'];
+    document.getElementById('card-title' + z).innerHTML = resultPokemon.name;
+    document.getElementById('height' + z).innerHTML = resultPokemon.height + ' cm';
+    document.getElementById('weight' + z).innerHTML = resultPokemon.weight + ' kg';
 }

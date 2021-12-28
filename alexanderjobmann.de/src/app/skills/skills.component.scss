@@ -8,10 +8,35 @@
     max-width: 100%;
     justify-content: center;
     
-    h2{
-    color: white;
-    font-size: 36px;
+    h2
+    {
+     color: white;
+     font-size: 36px;
+    }
 
 }
+
+.skill-box{
+    
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    .pl{
+        padding-left: 400px;
+    }
+    .pt{
+        padding-top: 100px;
+    }
+          
+
+    
+
+    
+}
+.skill-headline{
+display: flex;
+justify-content: center;
+align-items: center;
 
 }

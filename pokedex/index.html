@@ -6,95 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
 
 </head>
 
-<body onload="init()">
+<body onload=loadPokemons()>
 
+    <div class="overlay d-none" id="pokedex">
 
-
-    <!-- Container -->
-    <div class="container" id="container">
-    </div>
-    <!-- Fullscrren Container -->
-    <div class="container-fs d-none" id="container-fs" onclick="closeBig()">
-        <div class="card-big grass" id="cardSmall-1" onclick="event.stopPropagation()">
-            <div class="card-big-top">
-                <div class="headline" id="pokemon-name">Bisasam</div>
-                <div class="number" id="number">#1</div>
-            </div>
-            <div class="position-img-big">
-                <img class="img-big" id="pokemonImage" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png">
-            </div>
-            <div class="card-big-bottom" id="types-1">
-                <div class="type">
-                    grass
+        <div class="pokedex" id="pokedex-bg"style="width: 22rem;">
+            <div class="card-body">
+                <div class="pokedx-headline">
+                    <button onclick="closePokedex()" type="button" class="btn-close" aria-label="Close"></button>
+                    <h5 id="pokedex-name"></h5>
+                    <h5 id="pokedex-id"></h5>
                 </div>
-                <div class="type">
-                    poison
+
+                <div class="pokedex-types" id="types"></div>
+
+                <div class="pokedex-image">
+                    <img src="" id="pokedex-image">
                 </div>
             </div>
+
+            <div class="porgess-bar-stats">
+                <h1>Stats</h1>
+                <table class="progress-bar-container" id="pokedex-table"></table>
+                </table>
+            </div>
+
         </div>
-        <div class="card-bottom" onclick="event.stopPropagation()">
-            <table>
-                <th>
-                    Stats
-                </th>
-                <tr>
-                    <td>
-                        HP
-                    </td>
-                    <td>
-                        45
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Attack
-                    </td>
-                    <td>
-                        49
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Defense
-                    </td>
-                    <td>
-                        49
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Special Attack
-                    </td>
-                    <td>
-                        65
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Special Defense
-                    </td>
-                    <td>
-                        65
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Speed
-                    </td>
-                    <td>
-                        45
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+
+
+
+
     </div>
+
+    <div class="header">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">Pokedex</a>
+                
+                <div class="d-flex">
+                    <input class="form-control me-2" id="searchPokemon" placeholder="Pokemon" aria-label="Search">
+                    <button onclick="searchPokemon()"  class="btn btn-outline-success" type="submit">Suchen</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="main " id="main"></div>
+
+    <div id="loadMore" class="loadMore">
+        <button onclick="showMore()" type="button" class="btn btn-danger">Mehr anzeigen</button>
+    </div>
+
 </body>
 
 </html>
