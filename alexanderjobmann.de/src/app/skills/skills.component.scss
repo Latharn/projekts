@@ -17,26 +17,35 @@
 }
 
 .skill-box{
-    
-    justify-content: center;
+       justify-content: center;
     align-items: center;
-    color: white;
+    
 
     .pl{
-        padding-left: 400px;
+        padding-left: 200px;
     }
     .pt{
         padding-top: 100px;
-    }
-          
-
-    
-
-    
+    }  
 }
 .skill-headline{
 display: flex;
 justify-content: center;
 align-items: center;
 
+}
+
+.skill-content{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+
+
+    .img-ang{
+        width: 200px;
+    }
 }

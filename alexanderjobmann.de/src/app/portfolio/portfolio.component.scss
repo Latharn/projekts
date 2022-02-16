@@ -1,0 +1,76 @@
+.container 
+{
+    background-color: black;
+    height: 150vh;
+    width: 100vw;
+    max-width: 100%;
+    justify-content: center;
+    color: white;
+
+    h2 
+    {
+        color: white;
+        font-size: 36px;
+    }
+}
+.pl 
+{
+    padding-left: 200px;
+}
+.pt 
+{
+    padding-top: 100px;
+}
+.pf-headline 
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+}
+.pf-content 
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: wrap;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.projects 
+{
+    color: rgb(255, 0, 0);
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 250px;
+    width: 250px;
+    border: 5px solid green;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.p1 
+{
+    background-image: url("/assets/img/code.jpg");
+    background-size: contain;
+}
+.p2 
+{
+    background-image: url("/assets/img/desk.jpg");
+    background-size: cover;
+     
+}
+.p3 
+{
+    background-image: url("/assets/img/code.jpg");
+    background-size: cover;
+}
+.p4 
+{
+    background-image: url("/assets/img/desk.jpg");
+    background-size: cover;
+    
+}
